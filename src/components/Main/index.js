@@ -32,7 +32,7 @@ function Main() {
 		const date = dateValue.format('DD-MM-YYYY')
 		const time = timeValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
-	}, [dateValue, timeValue])
+	}, [dateValue, timeValue, tzValue])
 
 	useEffect(() => {
 		const query = getQueryParams()
