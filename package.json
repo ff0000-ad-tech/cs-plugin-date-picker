@@ -8,6 +8,7 @@
 	"main": "dist/index.html",
 	"scripts": {
 		"build": "react-scripts build",
+		"start": "react-scripts start",
 		"dev": "webpack --mode=development",
 		"pub": "np"
 	},
