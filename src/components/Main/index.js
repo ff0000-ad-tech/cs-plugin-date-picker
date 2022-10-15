@@ -30,7 +30,7 @@ function Main() {
 	const [targets, setTargets] = useState([])
 
 	useEffect(() => {
-		const date = dateValue.format('DD-MM-YYYY')
+		const date = dateValue.format('YYYY-MM-DD')
 		const time = timeValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
 	}, [dateValue, timeValue, tzValue])
@@ -51,13 +51,6 @@ function Main() {
 			}
 		}
 	}, [])
-
-	const applyDateTime = () => {
-		const date = dateValue.format('YYYY-MM-DD')
-		const time = dateValue.format('HH:mm:ss')
-		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
-		// console.error(timeValue)
-	}
 
 	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
 		'& .MuiInputBase-root': {
