@@ -9,7 +9,7 @@ log('isProduction:', isProduction)
 const PATHS = {
 	// dist: isProduction ? path.resolve(__dirname, 'dist') : path.resolve(TARGET_DEV_PATH, 'dist'),
 	dist: path.resolve(__dirname, 'dist'),
-	source: path.resolve(__dirname, 'source')
+	source: path.resolve(__dirname, 'src')
 }
 
 log(PATHS)
@@ -43,6 +43,18 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.jsx?$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						cacheDirectory: true,
+						cacheCompression: false,
+						envName: isProduction ? 'production' : 'development'
+					}
+				}
 			}
 		]
 	},
