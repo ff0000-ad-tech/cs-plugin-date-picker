@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.88e2a257.css",
-    "main.js": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.2b4cd27e.js",
-    "index.html": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/index.html",
-    "main.88e2a257.css.map": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.88e2a257.css.map",
-    "main.2b4cd27e.js.map": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.2b4cd27e.js.map"
+    "main.css": "/static/css/main.59b90ec8.css",
+    "main.js": "/static/js/main.8d1951a9.js",
+    "index.html": "/index.html",
+    "main.59b90ec8.css.map": "/static/css/main.59b90ec8.css.map",
+    "main.8d1951a9.js.map": "/static/js/main.8d1951a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.88e2a257.css",
-    "static/js/main.2b4cd27e.js"
+    "static/css/main.59b90ec8.css",
+    "static/js/main.8d1951a9.js"
   ]
 }
