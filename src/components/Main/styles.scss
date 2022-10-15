@@ -7,19 +7,31 @@
 
 .main {
   text-align: center;
-  padding: 30px 10px;
   color: black;
+
+  &__header {
+    background-color: rgb(52, 52, 52);
+    color: white;
+    height: 50px;
+    font-weight: bold;
+    font-size: 30px;
+    display: grid;
+    place-content: center;
+  }
 
   &__pickercontainer{
     display: flex;
     gap: 20px;
+    height: 80px;
     justify-content: center;
     align-items: center;
+    background-color: rgb(206, 206, 206);
   }
 
   &__adcontainer{
     display: flex;
     flex-direction: column;
+    padding-top: 30px;
     gap: 40px;
   }
 }

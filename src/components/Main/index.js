@@ -15,6 +15,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import Ad from '../Ad'
 import { v4 as uuidv4 } from 'uuid'
+import { styled } from '@mui/material/styles'
 
 function Main() {
 	// Get todays date and time
@@ -52,26 +53,29 @@ function Main() {
 	}, [])
 
 	const applyDateTime = () => {
-		const date = dateValue.format('DD-MM-YYYY')
+		const date = dateValue.format('YYYY-MM-DD')
 		const time = dateValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
 		// console.error(timeValue)
 	}
 
-	// const displayAds = () => {
-	// 	targets.map(target => {
-	// 		console.error(target.width)
-	// 		return <div>{target.width}</div>
-	// 	})
-	// }
+	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
+		'& .MuiInputBase-root': {
+			backgroundColor: 'white'
+		}
+	}))
+	const StyledTimePicker = styled(DesktopTimePicker)(({ theme }) => ({
+		'& .MuiInputBase-root': {
+			backgroundColor: 'white'
+		}
+	}))
 
 	return (
 		<div className="main">
-			{urlParams}
+			<div className="main__header">CS Date Picker</div>
 			<div className="main__pickercontainer">
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DatePicker
-						label="Date"
+					<StyledDatePicker
 						value={dateValue}
 						onChange={newValue => {
 							setDateValue(newValue)
@@ -80,8 +84,7 @@ function Main() {
 					/>
 				</LocalizationProvider>
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DesktopTimePicker
-						label="Time"
+					<StyledTimePicker
 						value={timeValue}
 						onChange={newValue => {
 							setTimeValue(newValue)
@@ -90,12 +93,11 @@ function Main() {
 					/>
 				</LocalizationProvider>
 				<FormControl style={{ width: '170px' }}>
-					<InputLabel id="demo-simple-select-label">Timezone</InputLabel>
 					<Select
 						labelId="demo-simple-select-label"
 						id="demo-simple-select"
 						value={tzValue}
-						label="Timezone"
+						sx={{ backgroundColor: 'white' }}
 						onChange={e => {
 							setTzValue(e.target.value)
 						}}

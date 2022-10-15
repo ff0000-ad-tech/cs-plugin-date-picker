@@ -27,6 +27,7 @@
 		"@emotion/styled": "^11.10.4",
 		"@ff0000-ad-tech/debug": "latest",
 		"@ff0000-ad-tech/hooks-regex": "^1.0.2",
+		"@mui/icons-material": "^5.10.9",
 		"@mui/material": "^5.10.9",
 		"@mui/x-date-pickers": "^5.0.4",
 		"@testing-library/jest-dom": "^5.16.5",
