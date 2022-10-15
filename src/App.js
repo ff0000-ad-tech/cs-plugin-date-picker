@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 function App() {
 	useEffect(() => {
+		const query = getQueryParams()
 		const indexJSON = JSON.parse(query.targets)
 		console.warn(indexJSON)
 	})
