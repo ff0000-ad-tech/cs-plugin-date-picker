@@ -4,11 +4,11 @@ import { getQueryParams } from 'ad-global'
 import { useEffect } from 'react'
 
 function App() {
-	useEffect(() => {
-		const query = getQueryParams()
-		const indexJSON = JSON.parse(query.targets)
-		console.warn(indexJSON)
-	})
+	// useEffect(() => {
+	// 	const query = getQueryParams()
+	// 	const indexJSON = JSON.parse(query.targets)
+	// 	console.warn(indexJSON)
+	// })
 
 	return (
 		<div className="App">
