@@ -1,0 +1,26 @@
+* {
+	// position: absolute;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.main {
+  text-align: center;
+  padding: 30px 10px;
+  color: black;
+
+  &__pickercontainer{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__adcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
