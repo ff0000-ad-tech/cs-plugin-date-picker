@@ -1,7 +1,14 @@
 import logo from './logo.svg'
 import './App.css'
+import { getQueryParams } from 'ad-global'
+import { useEffect } from 'react'
 
 function App() {
+	useEffect(() => {
+		const indexJSON = JSON.parse(query.targets)
+		console.warn(indexJSON)
+	})
+
 	return (
 		<div className="App">
 			<header className="App-header">
