@@ -16,7 +16,7 @@ log(PATHS)
 
 module.exports = {
 	watch: !isProduction,
-	entry: path.resolve(PATHS.source, 'js/main.js'),
+	entry: path.resolve(PATHS.source, 'index.js'),
 	output: {
 		path: PATHS.dist,
 		filename: 'bundle.js',
