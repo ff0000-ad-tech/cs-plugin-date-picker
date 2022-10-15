@@ -1,14 +1,14 @@
 import logo from './logo.svg'
 import './App.css'
-import { getQueryParams } from 'ad-global'
+import { getQueryParams } from '@ff0000-ad-tech/ad-global'
 import { useEffect } from 'react'
 
 function App() {
-	// useEffect(() => {
-	// 	const query = getQueryParams()
-	// 	const indexJSON = JSON.parse(query.targets)
-	// 	console.warn(indexJSON)
-	// })
+	useEffect(() => {
+		const query = getQueryParams()
+		const indexJSON = JSON.parse(query.targets)
+		console.warn(indexJSON)
+	})
 
 	return (
 		<div className="App">

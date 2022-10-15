@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.073c9b0a.css",
+    "main.js": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.d58c58d2.js",
+    "static/media/logo.svg": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/index.html",
+    "main.073c9b0a.css.map": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.073c9b0a.css.map",
+    "main.d58c58d2.js.map": "http://192.168.1.122:5200/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.d58c58d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d58c58d2.js"
+  ]
+}
