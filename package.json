@@ -1,0 +1,64 @@
+{
+	"name": "@ff0000-ad-tech/cs-plugin-date-picker",
+	"publishConfig": {
+		"access": "public"
+	},
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/index.html",
+	"scripts": {
+		"build": "rimraf ./dist && NODE_ENV=production webpack --config webpack.config.js --mode=production",
+		"dev": "webpack --mode=development",
+		"pub": "np"
+	},
+	"engines": {
+		"node": ">=9.8.0",
+		"npm": ">=6.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ff0000-ad-tech/cs-plugin-apply-network.git"
+	},
+	"author": "RED Interactive Agency",
+	"license": "MIT",
+	"dependencies": {
+		"@ff0000-ad-tech/debug": "latest",
+		"@ff0000-ad-tech/hooks-regex": "^1.0.2",
+		"dotenv": "^6.1.0",
+		"fs-extra": "^5.0.0",
+		"minimist": "^1.2.0",
+		"path": "^0.12.7",
+		"rimraf": "^2.6.2"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.1.2",
+		"@babel/core": "^7.1.2",
+		"@babel/plugin-proposal-class-properties": "^7.1.0",
+		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+		"@babel/preset-env": "^7.1.0",
+		"@ff0000-ad-tech/ad-global": "^2.2.0",
+		"babel-loader": "^8.0.4",
+		"babel-eslint": "^8.2.1",
+		"copy-webpack-plugin": "^4.5.2",
+		"eslint": "^4.16.0",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-prettier": "^2.5.0",
+		"np": "^2.19.0",
+		"prettier": "^1.10.2",
+		"superagent": "^3.8.3",
+		"webpack": "^4.20.2",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.11"
+	},
+	"wp-creative-server": {
+		"routes": {
+			"app": "/dist",
+			"api": "./lib/api.js"
+		},
+		"hooks": {
+			"bulk-control": {
+				"CS Date Picker": "/app/index.html"
+			}
+		}
+	}
+}
