@@ -9,13 +9,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker'
 import Button from '@mui/material/Button'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import Ad from '../Ad'
-import { v4 as uuidv4 } from 'uuid'
 import { styled } from '@mui/material/styles'
+import TabPanel from '../TabPanel'
+import AdDisplay from '../AdDisplay'
 
 function Main() {
 	// Get todays date and time
@@ -28,7 +27,44 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
+	const [savedDates, setSavedDates] = useState([])
 
+	// Save a date
+	const saveDate = () => {
+		setSavedDates(prev => {
+			// Create new saved date obj
+			const date = {
+				dateValue,
+				timeValue,
+				tzValue,
+				urlParams
+			}
+			date.label = generateLabel(date)
+			return [...prev, date]
+		})
+	}
+
+	// Generate readable label for tabs
+	const generateLabel = ({ dateValue, timeValue, tzValue }) => {
+		const date = dateValue.format('MM/DD/YYYY')
+		const time = timeValue.format('h:mm A')
+		return `${date} ${time} ${tzValue}`
+	}
+
+	// Deletes a saved date and tab
+	const deleteSavedDate = urlParams => {
+		const filtered = savedDates.filter(date => date.urlParams !== urlParams)
+		setSavedDates(filtered)
+	}
+
+	const loadDate = ({ dateValue, timeValue, tzValue, urlParams }) => {
+		console.error({ dateValue })
+		setDateValue(dateValue)
+		setTimeValue(timeValue)
+		setTzValue(tzValue)
+	}
+
+	// Set url params
 	useEffect(() => {
 		const date = dateValue.format('YYYY-MM-DD')
 		const time = timeValue.format('HH:mm:ss')
@@ -102,16 +138,12 @@ function Main() {
 						<MenuItem value="US/Hawaii">US/Hawaii</MenuItem>
 					</Select>
 				</FormControl>
+				<Button variant="contained" onClick={saveDate}>
+					Save Date
+				</Button>
 			</div>
-			<div className="main__adcontainer">
-				{targets.map(target => {
-					return (
-						<Ad key={uuidv4()} data={target} urlParams={urlParams}>
-							{target.width}
-						</Ad>
-					)
-				})}
-			</div>
+			{savedDates.length > 0 ? <TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} /> : null}
+			<AdDisplay targets={targets} urlParams={urlParams} />
 		</div>
 	)
 }
