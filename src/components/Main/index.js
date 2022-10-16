@@ -72,7 +72,9 @@ function Main() {
 	}, [dateValue, timeValue, tzValue])
 
 	useEffect(() => {
+		let subscribed = true
 		const query = getQueryParams()
+		const targetsArr = [...targets]
 		if (query.targets) {
 			// Get the query params and parse it so we get proper obj
 			const targetsObj = JSON.parse(query.targets)
@@ -83,8 +85,14 @@ function Main() {
 				// Split the size to get width and height
 				const sizeArr = size.split('x')
 				// Create new target obj
-				setTargets(prev => [...prev, { width: sizeArr[0], height: sizeArr[1], path: value }])
+				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], path: value })
 			}
+		}
+		if (subscribed) {
+			setTargets(targetsArr)
+		}
+		return () => {
+			subscribed = false
 		}
 	}, [])
 
@@ -142,8 +150,11 @@ function Main() {
 					Save Date
 				</Button>
 			</div>
-			{savedDates.length > 0 ? <TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} /> : null}
-			<AdDisplay targets={targets} urlParams={urlParams} />
+			{savedDates.length > 0 ? (
+				<TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} />
+			) : (
+				<AdDisplay targets={targets} urlParams={urlParams} />
+			)}
 		</div>
 	)
 }

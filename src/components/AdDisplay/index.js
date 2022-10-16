@@ -1,5 +1,5 @@
 import './styles.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Ad from '../Ad'
 import { v4 as uuidv4 } from 'uuid'
