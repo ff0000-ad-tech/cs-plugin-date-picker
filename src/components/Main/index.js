@@ -66,9 +66,11 @@ function Main() {
 
 	// Set url params
 	useEffect(() => {
-		const date = dateValue.format('YYYY-MM-DD')
-		const time = timeValue.format('HH:mm:ss')
-		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
+		if (savedDates.length < 1) {
+			const date = dateValue.format('YYYY-MM-DD')
+			const time = timeValue.format('HH:mm:ss')
+			setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
+		}
 	}, [dateValue, timeValue, tzValue])
 
 	useEffect(() => {
