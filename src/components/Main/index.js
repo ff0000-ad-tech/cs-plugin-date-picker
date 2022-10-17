@@ -79,7 +79,7 @@ function Main() {
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
-
+		alert('OKM')
 		axios
 			.get('/api/readtargets')
 			.then(function(response) {
