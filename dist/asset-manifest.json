@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.c1f3a6e2.css",
-    "main.js": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.76ff4830.js",
+    "main.js": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.d092e94a.js",
     "index.html": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/index.html",
     "main.c1f3a6e2.css.map": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/css/main.c1f3a6e2.css.map",
-    "main.76ff4830.js.map": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.76ff4830.js.map"
+    "main.d092e94a.js.map": "/@ff0000-ad-tech/cs-plugin-date-picker/app/dist/static/js/main.d092e94a.js.map"
   },
   "entrypoints": [
     "static/css/main.c1f3a6e2.css",
-    "static/js/main.76ff4830.js"
+    "static/js/main.d092e94a.js"
   ]
 }
