@@ -27,11 +27,12 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
-	const yap = sessionStorage.getItem('savedDates')
-	console.error('yap=====', yap)
-	const sessionSavedDates = JSON.parse(yap)
-	const defaultSavedDates = sessionSavedDates.length > 0 ? sessionSavedDates : []
-	const [savedDates, setSavedDates] = useState(defaultSavedDates)
+	// Get any saved dates in session storage
+	const sessionSavedDatesRaw = sessionStorage.getItem('savedDates')
+	// If savedDates does not exist in session storage set it to empty array, else parse the array
+	const sessionSavedDates = !sessionSavedDatesRaw ? [] : JSON.parse(sessionSavedDatesRaw)
+	// const defaultSavedDates = sessionSavedDates.length > 0 ? sessionSavedDates : []
+	const [savedDates, setSavedDates] = useState(sessionSavedDates)
 
 	// Save a date
 	const saveDate = () => {
