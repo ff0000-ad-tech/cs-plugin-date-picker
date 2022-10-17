@@ -27,7 +27,9 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
-	const sessionSavedDates = JSON.parse(sessionStorage.getItem('savedDates'))
+	const yap = sessionStorage.getItem('savedDates')
+	console.error('yap=====', yap)
+	const sessionSavedDates = JSON.parse(yap)
 	const defaultSavedDates = sessionSavedDates.length > 0 ? sessionSavedDates : []
 	const [savedDates, setSavedDates] = useState(defaultSavedDates)
 
