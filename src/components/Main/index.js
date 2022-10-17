@@ -15,7 +15,7 @@ import Select from '@mui/material/Select'
 import { styled } from '@mui/material/styles'
 import TabPanel from '../TabPanel'
 import AdDisplay from '../AdDisplay'
-import axio from 'axios'
+import axios from 'axios'
 
 function Main() {
 	// Get todays date and time
