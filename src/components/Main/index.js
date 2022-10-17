@@ -71,7 +71,6 @@ function Main() {
 
 	// Set url params
 	useEffect(() => {
-		alert('CHANGED!')
 		const date = dateValue.format('YYYY-MM-DD')
 		const time = timeValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
@@ -80,16 +79,14 @@ function Main() {
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
-		alert('OKM')
 		axios
-			.get('/api/readtargets')
-			.then(function(response) {
-				// handle success
-				console.log(response)
+			.get('/api/read-targets')
+			.then(res => {
+				console.log(res.data)
 			})
-			.catch(function(error) {
+			.catch(error => {
 				// handle error
-				console.log(error)
+				console.log('Could not complete request to creative server', error)
 			})
 			.then(function() {
 				// always executed
