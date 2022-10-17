@@ -78,6 +78,8 @@ function Main() {
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
+		const yap = JSON.parse(query)
+		console.error({ yap })
 		const targetsArr = [...targets]
 		if (query.targets) {
 			// Get the query params and parse it so we get proper obj
