@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
@@ -38,11 +38,17 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs(props) {
-	const [value, setValue] = React.useState(0)
+	const [value, setValue] = useState(0)
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
 	}
+
+	const handleDelete = useCallback((event, value) => {
+		// stop event from propagating to the target element's parent
+		event.stopPropagation()
+		setValue(0)
+	})
 
 	return (
 		<Box sx={{ width: '100%' }}>
@@ -56,7 +62,8 @@ export default function BasicTabs(props) {
 										{date.label}
 										<DeleteForeverIcon
 											style={{ marginLeft: '20px' }}
-											onClick={() => {
+											onClick={e => {
+												handleDelete(e)
 												props.onDelete(date.urlParams)
 											}}
 										/>

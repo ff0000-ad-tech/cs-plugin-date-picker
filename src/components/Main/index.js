@@ -27,7 +27,9 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
-	const [savedDates, setSavedDates] = useState([])
+	const sessionSavedDates = JSON.parse(sessionStorage.getItem('savedDates'))
+	const defaultSavedDates = sessionSavedDates.length > 0 ? sessionSavedDates : []
+	const [savedDates, setSavedDates] = useState(defaultSavedDates)
 
 	// Save a date
 	const saveDate = () => {
@@ -40,7 +42,9 @@ function Main() {
 				urlParams
 			}
 			date.label = generateLabel(date)
-			return [...prev, date]
+			const newSavedDates = [...prev, date]
+			sessionStorage.setItem('savedDates', JSON.stringify(newSavedDates))
+			return newSavedDates
 		})
 	}
 
@@ -54,14 +58,8 @@ function Main() {
 	// Deletes a saved date and tab
 	const deleteSavedDate = urlParams => {
 		const filtered = savedDates.filter(date => date.urlParams !== urlParams)
+		sessionStorage.setItem('savedDates', JSON.stringify(filtered))
 		setSavedDates(filtered)
-	}
-
-	const loadDate = ({ dateValue, timeValue, tzValue, urlParams }) => {
-		console.error({ dateValue })
-		setDateValue(dateValue)
-		setTimeValue(timeValue)
-		setTzValue(tzValue)
 	}
 
 	// Set url params
