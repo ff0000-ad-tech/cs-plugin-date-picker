@@ -7,8 +7,9 @@
 	"description": "",
 	"main": "dist/index.html",
 	"scripts": {
-		"build": "react-scripts build",
+		"build": "react-scripts build && mv build dist",
 		"start": "react-scripts start",
+		"dev": "webpack --mode=development",
 		"pub": "npm run build && np"
 	},
 	"engines": {
@@ -32,7 +33,6 @@
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
-		"axios": "^1.1.3",
 		"dayjs": "^1.11.5",
 		"dotenv": "^6.1.0",
 		"fs-extra": "^5.0.0",
@@ -54,6 +54,7 @@
 		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
 		"@babel/preset-env": "^7.1.0",
 		"@ff0000-ad-tech/ad-global": "^2.2.0",
+		"axios": "^1.1.3",
 		"babel-eslint": "^8.2.1",
 		"babel-loader": "^8.0.4",
 		"copy-webpack-plugin": "^4.5.2",
@@ -69,7 +70,8 @@
 	},
 	"wp-creative-server": {
 		"routes": {
-			"app": "/dist"
+			"app": "/dist",
+			"api": "./lib/api.js"
 		},
 		"hooks": {
 			"bulk-control": {
