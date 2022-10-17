@@ -7,7 +7,7 @@
 	"description": "",
 	"main": "dist/index.html",
 	"scripts": {
-		"build": "react-scripts build && mv build dist",
+		"build": "react-scripts build && rm -rf dist && mv build dist",
 		"start": "react-scripts start",
 		"dev": "webpack --mode=development",
 		"pub": "npm run build && np"
