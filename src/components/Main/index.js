@@ -15,6 +15,7 @@ import Select from '@mui/material/Select'
 import { styled } from '@mui/material/styles'
 import TabPanel from '../TabPanel'
 import AdDisplay from '../AdDisplay'
+import axio from 'axios'
 
 function Main() {
 	// Get todays date and time
@@ -78,7 +79,21 @@ function Main() {
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
-		console.error('QUERY=========', query)
+
+		axios
+			.get('/api/readtargets')
+			.then(function(response) {
+				// handle success
+				console.log(response)
+			})
+			.catch(function(error) {
+				// handle error
+				console.log(error)
+			})
+			.then(function() {
+				// always executed
+			})
+
 		const targetsArr = [...targets]
 		if (query.targets) {
 			// Get the query params and parse it so we get proper obj
