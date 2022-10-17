@@ -28,6 +28,7 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
+	const [deployFolder, setDeployFolder] = useState('2-debug')
 
 	// Session storage
 	// Get any saved dates in session storage
@@ -71,26 +72,15 @@ function Main() {
 
 	// Set url params
 	useEffect(() => {
+		console.error(deployFolder)
 		const date = dateValue.format('YYYY-MM-DD')
 		const time = timeValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
-	}, [dateValue, timeValue, tzValue])
+	}, [dateValue, timeValue, tzValue, deployFolder])
 
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
-		axios
-			.get('/api/read-targets')
-			.then(res => {
-				console.log(res.data)
-			})
-			.catch(error => {
-				// handle error
-				console.log('Could not complete request to creative server', error)
-			})
-			.then(function() {
-				// always executed
-			})
 
 		const targetsArr = [...targets]
 		if (query.targets) {
@@ -103,9 +93,12 @@ function Main() {
 				// Split the size to get width and height
 				const sizeArr = size.split('x')
 				// Create new target obj
-				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], path: value })
+				const path = `/${deployFolder}/${profile}/${index}`
+				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], path: path })
 			}
 		}
+		console.error({ query })
+		console.error({ targetsArr })
 		if (subscribed) {
 			setTargets(targetsArr)
 		}
@@ -162,6 +155,20 @@ function Main() {
 						<MenuItem value="US/Mountain">US/Mountain</MenuItem>
 						<MenuItem value="US/Pacific">US/Pacific</MenuItem>
 						<MenuItem value="US/Hawaii">US/Hawaii</MenuItem>
+					</Select>
+				</FormControl>
+				<FormControl style={{ width: '170px' }}>
+					<Select
+						labelId="demo-simple-select-label"
+						id="demo-simple-select"
+						value={deployFolder}
+						sx={{ backgroundColor: 'white' }}
+						onChange={e => {
+							setDeployFolder(e.target.value)
+						}}
+					>
+						<MenuItem value="2-debug">2-debug</MenuItem>
+						<MenuItem value="3-traffic">3-traffic</MenuItem>
 					</Select>
 				</FormControl>
 				<Button variant="contained" onClick={saveDate}>
