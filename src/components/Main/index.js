@@ -118,7 +118,6 @@ function Main() {
 			}
 		})
 		if (subscribed) {
-			console.error('SET TARGETS TO: ', targetsObj)
 			setTargets(targetsObj)
 			subscribed = false
 		}
