@@ -98,7 +98,6 @@ function Main() {
 
 	useEffect(() => {
 		getTargets()
-		console.error(t)
 		let subscribed = true
 		const query = getQueryParams()
 
