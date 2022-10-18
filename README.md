@@ -1,4 +1,4 @@
-##### RED Interactive Agency - Ad Technology
+##### 160over90 - Ad Technology
 
 [![npm (tag)](https://img.shields.io/npm/v/@ff0000-ad-tech%2Fcs-plugin-date-picker.svg?style=flat-square)](https://www.npmjs.com/package/@ff0000-ad-tech%2Fcs-plugin-date-picker)
 [![GitHub issues](https://img.shields.io/github/issues/ff0000-ad-tech/cs-plugin-date-picker.svg?style=flat-square)](https://github.com/ff0000-ad-tech/cs-plugin-date-picker)
