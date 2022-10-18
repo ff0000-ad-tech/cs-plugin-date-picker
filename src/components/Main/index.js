@@ -85,15 +85,13 @@ function Main() {
 		return `/2-debug/${index}/`
 	}
 
-	const getTargets = () => {
-		return axios
-			.get('/api/read-targets')
-			.then(response => {
-				return response.data
-			})
-			.catch(error => {
-				console.error('ERROR GETTING TARGETS')
-			})
+	const getTargets = async () => {
+		try {
+			const res = await axios.get('/api/read-targets')
+			return res.data
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	useEffect(() => {
