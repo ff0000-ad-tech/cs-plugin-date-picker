@@ -100,7 +100,7 @@ function Main() {
 						const sizeArr = value.size.split('x')
 						// Create new target obj
 
-						const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || filename
+						const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || value.index
 						// Create path obj
 						const debugPath = `/2-debug/${value.size}/`
 						const trafficPath = `/3-traffic/default/${indexStripped}/`
