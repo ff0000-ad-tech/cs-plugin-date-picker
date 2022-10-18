@@ -2,7 +2,7 @@ import './styles.scss'
 import ReplayIcon from '@mui/icons-material/Replay'
 import IconButton from '@mui/material/IconButton'
 import { useState } from 'react'
-function Ad({ target, urlParams }) {
+function Ad({ target, urlParams, debugOrTraffic }) {
 	const { width, height, debugPath, trafficPath } = target
 	const [replayKey, setReplayKey] = useState(1)
 
@@ -12,7 +12,7 @@ function Ad({ target, urlParams }) {
 
 	// Change path based on profile
 	const getPath = () => {
-		return target.profile == 'default' ? debugPath : trafficPath
+		return debugOrTraffic == 'debug' ? debugPath : trafficPath
 	}
 
 	return (

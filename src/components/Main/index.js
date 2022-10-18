@@ -16,6 +16,9 @@ import { styled } from '@mui/material/styles'
 import TabPanel from '../TabPanel'
 import AdDisplay from '../AdDisplay'
 import axios from 'axios'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 function Main() {
 	// Get todays date and time
@@ -29,6 +32,7 @@ function Main() {
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState({})
 	const [deployFolder, setDeployFolder] = useState('default')
+	const [debugOrTraffic, setDebugOrTraffic] = useState('debug')
 
 	// Session storage
 	// Get any saved dates in session storage
@@ -49,7 +53,8 @@ function Main() {
 				tzValue,
 				urlParams,
 				profile: deployFolder,
-				targets: targets[deployFolder]
+				targets: targets[deployFolder],
+				debugOrTraffic: debugOrTraffic
 			}
 			date.label = generateLabel(date)
 			const newSavedDates = [...prev, date]
@@ -188,10 +193,25 @@ function Main() {
 							setDeployFolder(e.target.value)
 						}}
 					>
+						<MenuItem value="debug">Debug</MenuItem>
 						{Object.keys(targets).map(key => {
 							return <MenuItem value={key}>{key}</MenuItem>
 						})}
 					</Select>
+				</FormControl>
+				<FormControl>
+					<RadioGroup
+						defaultValue="debug"
+						onChange={e => {
+							setDebugOrTraffic(e.target.value)
+						}}
+						row
+						aria-labelledby="demo-row-radio-buttons-group-label"
+						name="row-radio-buttons-group"
+					>
+						<FormControlLabel value="debug" control={<Radio />} label="Debug" />
+						<FormControlLabel value="traffic" control={<Radio />} label="Traffic" />
+					</RadioGroup>
 				</FormControl>
 				<Button variant="contained" onClick={saveDate}>
 					Save Date
@@ -200,7 +220,7 @@ function Main() {
 			{savedDates.length > 0 ? (
 				tabPanel
 			) : Object.entries(targets).length > 0 ? (
-				<AdDisplay targets={targets[deployFolder]} urlParams={urlParams} deployFolder={deployFolder} />
+				<AdDisplay targets={targets[deployFolder]} debugOrTraffic={debugOrTraffic} urlParams={urlParams} deployFolder={deployFolder} />
 			) : null}
 		</div>
 	)

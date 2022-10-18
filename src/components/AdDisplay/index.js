@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import './styles.scss'
 
-function AdDisplay({ targets, urlParams }) {
+function AdDisplay({ targets, urlParams, debugOrTraffic }) {
 	return (
 		<div className="addisplay">
 			{targets.map(target => {
-				return <Ad key={uuidv4()} target={target} urlParams={urlParams} />
+				return <Ad key={uuidv4()} debugOrTraffic={debugOrTraffic} target={target} urlParams={urlParams} />
 			})}
 		</div>
 	)

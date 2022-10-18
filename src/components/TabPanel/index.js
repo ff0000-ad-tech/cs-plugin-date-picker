@@ -79,7 +79,7 @@ export default function BasicTabs(props) {
 			{props.savedDates.map((date, idx) => {
 				return (
 					<TabPanel value={value} index={idx} key={uuidv4()}>
-						<AdDisplay targets={date.targets} urlParams={date.urlParams} />
+						<AdDisplay targets={date.targets} urlParams={date.urlParams} debugOrTraffic={date.debugOrTraffic} />
 					</TabPanel>
 				)
 			})}
