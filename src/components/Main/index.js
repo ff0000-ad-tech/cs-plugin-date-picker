@@ -27,7 +27,7 @@ function Main() {
 	const [timeValue, setTimeValue] = useState(dayjs(today))
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
-	const [targets, setTargets] = useState([])
+	const [targets, setTargets] = useState({})
 	const [deployFolder, setDeployFolder] = useState('default')
 
 	// Session storage
@@ -85,7 +85,7 @@ function Main() {
 	}
 
 	useEffect(() => {
-		const targetsArr = []
+		const targetsObj = {}
 		const subscribed = true
 
 		axios.get('/api/get-profiles').then(res => {
@@ -96,12 +96,8 @@ function Main() {
 				// Iterate profiles object
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
 					// Create new object to save in targets
-					const target = {
-						profile: profileKey,
-						targets: []
-					}
 
-					target.targets = profileValue.targets.map(targetObj => {
+					const targets = profileValue.targets.map(targetObj => {
 						// Split the size to get width and height
 						const size = targetObj.size
 						const sizeArr = size.split('x')
@@ -121,13 +117,13 @@ function Main() {
 						return targetObj
 					})
 
-					targetsArr.push(target)
+					targetsObj[profileKey].targets = targets
 				}
 			}
 		})
 		if (subscribed) {
-			console.error('SET TARGETS TO: ', targetsArr)
-			setTargets(targetsArr)
+			console.error('SET TARGETS TO: ', targetsObj)
+			setTargets(targetsObj)
 			subscribed = false
 		}
 		// axios
