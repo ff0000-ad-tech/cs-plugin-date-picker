@@ -9,4 +9,4 @@
 [![npm license](https://img.shields.io/npm/l/@ff0000-ad-tech%2Fcs-plugin-apply-network.svg?style=flat-square)](https://github.com/ff0000-ad-tech/cs-plugin-apply-network/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-# Creative Server Plugin - Apply Network
+# Creative Server Plugin - CS Date Picker
