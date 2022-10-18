@@ -88,6 +88,7 @@ function Main() {
 	const getTargets = async () => {
 		try {
 			const res = await axios.get('/api/read-targets')
+			console.error('GOT DATA TTT', res.data)
 			return res.data
 		} catch (err) {
 			console.log(err)
@@ -96,7 +97,6 @@ function Main() {
 
 	useEffect(() => {
 		const t = getTargets()
-		console.error('GOT DATA TT', t)
 		let subscribed = true
 		const query = getQueryParams()
 
