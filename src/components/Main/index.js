@@ -97,7 +97,7 @@ function Main() {
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
 					// Create new object to save in targets
 					const target = {
-						profile: key,
+						profile: profileKey,
 						targets: []
 					}
 
