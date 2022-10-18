@@ -98,13 +98,14 @@ function Main() {
 					for (let [key, value] of Object.entries(targetsObj)) {
 						// Split the size to get width and height
 						const sizeArr = value.size.split('x')
-						// Create new target obj
 
+						// Strip the .html off the index name we get
 						const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || value.index
-						const [index, indexName] = indexStripped.split('__')
+						// Replace the "index_" with "size+__" so we get 300x250__v1
+						const indexFolder = indexStripped.replace('index_', `${size}__`)
 						// Create path obj
 						const debugPath = `/2-debug/${value.size}/`
-						const trafficPath = `/3-traffic/default/${value.size}__${indexName}/`
+						const trafficPath = `/3-traffic/default/${indexFolder}/`
 
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
