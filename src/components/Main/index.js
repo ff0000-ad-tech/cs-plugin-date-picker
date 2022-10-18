@@ -110,7 +110,7 @@ function Main() {
 						const indexFolder = indexStripped.replace('index_', `${size}__`)
 
 						// Create path obj
-						targetObj.debugPath = `/2-debug/${size}/`
+						targetObj.debugPath = `/2-debug/${indexFolder}/`
 						targetObj.trafficPath = `/3-traffic/${profileKey}/${indexFolder}/`
 						targetObj.width = width
 						targetObj.height = height
