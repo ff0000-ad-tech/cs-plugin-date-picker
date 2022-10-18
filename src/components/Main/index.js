@@ -88,7 +88,7 @@ function Main() {
 			if (res.data) {
 				// Response is the profiles object
 				const profilesObj = res.data
-				console.error('GOT PROFILES', profilesObj)
+
 				// Iterate profiles object
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
 					// Create new object to save in targets
