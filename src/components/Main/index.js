@@ -97,6 +97,7 @@ function Main() {
 
 	useEffect(() => {
 		const t = getTargets()
+		console.error('GOT DATA YAP', t)
 		let subscribed = true
 		const query = getQueryParams()
 
