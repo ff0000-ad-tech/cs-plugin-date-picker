@@ -94,15 +94,14 @@ function Main() {
 					// Get the query params and parse it so we get proper obj
 					const targetsObj = res.data
 					// Populate the targets array
-					for (let [key, trafficPath] of Object.entries(targetsObj)) {
-						// Split the path to get the size
-						const [size, index] = key.split('/')
+					for (let [key, value] of Object.entries(targetsObj)) {
 						// Split the size to get width and height
-						const sizeArr = size.split('x')
+						const sizeArr = value.size.split('x')
 						// Create new target obj
 
 						// Create path obj
-						const debugPath = getDebugPath(trafficPath)
+						const debugPath = `/2-debug/${value.size}/`
+						const trafficPath = `/trafficPath/default/${size}/`
 
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
