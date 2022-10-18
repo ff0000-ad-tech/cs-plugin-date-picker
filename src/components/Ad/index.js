@@ -11,9 +11,9 @@ function Ad({ data, urlParams, deployFolder }) {
 	}
 
 	// Change path based on deployFolder
-	// const getPath = () => {
-	// 	return deployFolder == '2-debug' ? debugPath : trafficPath
-	// }
+	const getPath = () => {
+		return deployFolder == 'default' ? debugPath : trafficPath
+	}
 
 	return (
 		<div className="ad">
