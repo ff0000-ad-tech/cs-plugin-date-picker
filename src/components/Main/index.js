@@ -1,5 +1,5 @@
 import './styles.scss'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { getQueryParams } from '@ff0000-ad-tech/ad-global'
 import { useEffect } from 'react'
 import dayjs from 'dayjs'
@@ -140,6 +140,8 @@ function Main() {
 		}
 	}))
 
+	const tabPanel = useMemo(() => <TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />, [savedDates])
+
 	return (
 		<div className="main">
 			<div className="main__header">CS Date Picker</div>
@@ -199,7 +201,7 @@ function Main() {
 				</Button>
 			</div>
 			{savedDates.length > 0 ? (
-				<TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />
+				{ tabPanel }
 			) : Object.entries(targets).length > 0 ? (
 				<AdDisplay targets={targets[deployFolder]} urlParams={urlParams} deployFolder={deployFolder} />
 			) : null}
