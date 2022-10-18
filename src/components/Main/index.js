@@ -79,12 +79,6 @@ function Main() {
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
 	}, [dateValue, timeValue, tzValue])
 
-	const getDebugPath = path => {
-		const arr = path.split('/')
-		const [slash, folder, profile, index, trailingSlash] = arr
-		return `/2-debug/${index}/`
-	}
-
 	useEffect(() => {
 		const targetsObj = {}
 		let subscribed = true
@@ -141,6 +135,7 @@ function Main() {
 		}
 	}))
 
+	// Memoize tab panel so it does not rerender when changing dates
 	const tabPanel = useMemo(() => {
 		return <TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />
 	}, [savedDates])
