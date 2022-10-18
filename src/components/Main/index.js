@@ -114,7 +114,7 @@ function Main() {
 						const indexFolder = indexStripped.replace('index_', `${size}__`)
 
 						// Create path obj
-						targetObj.debugPath = `/2-debug/${targetKey.size}/`
+						targetObj.debugPath = `/2-debug/${size}/`
 						targetObj.trafficPath = `/3-traffic/${profileKey}/${indexFolder}/`
 						targetObj.width = width
 						targetObj.height = height
@@ -223,8 +223,10 @@ function Main() {
 							setDeployFolder(e.target.value)
 						}}
 					>
-						<MenuItem value="2-debug">2-debug</MenuItem>
-						<MenuItem value="3-traffic">3-traffic</MenuItem>
+						{targets.map(target => {
+							const profile = target.profile
+							return <MenuItem value={profile}>{profile}</MenuItem>
+						})}
 					</Select>
 				</FormControl>
 				<Button variant="contained" onClick={saveDate}>
