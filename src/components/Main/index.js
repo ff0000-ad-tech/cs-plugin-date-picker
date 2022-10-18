@@ -236,7 +236,7 @@ function Main() {
 			{savedDates.length > 0 ? (
 				<TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} deployFolder={deployFolder} />
 			) : (
-				<AdDisplay targets={targets[deployFolder]} urlParams={urlParams} deployFolder={deployFolder} />
+				<AdDisplay targets={targets} urlParams={urlParams} deployFolder={deployFolder} />
 			)}
 		</div>
 	)
