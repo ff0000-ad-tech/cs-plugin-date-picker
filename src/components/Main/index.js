@@ -193,7 +193,6 @@ function Main() {
 							setDeployFolder(e.target.value)
 						}}
 					>
-						<MenuItem value="debug">Debug</MenuItem>
 						{Object.keys(targets).map(key => {
 							return <MenuItem value={key}>{key}</MenuItem>
 						})}
