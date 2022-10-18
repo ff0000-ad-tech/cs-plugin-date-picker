@@ -85,13 +85,19 @@ function Main() {
 		return `/2-debug/${index}/`
 	}
 
-	const getTargets = async () => {
-		const res = await axios('/api/read-targets')
-		return await res.json()
+	const getTargets = () => {
+		axios
+			.get('/api/read-targets')
+			.then(response => {
+				console.error('GOT DATA', response)
+			})
+			.catch(error => {
+				console.error('ERROR GETTING TARGETS')
+			})
 	}
 
 	useEffect(() => {
-		const t = getTargets()
+		getTargets()
 		console.error(t)
 		let subscribed = true
 		const query = getQueryParams()
