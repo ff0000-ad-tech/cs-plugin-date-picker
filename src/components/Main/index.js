@@ -88,39 +88,79 @@ function Main() {
 		const targetsArr = []
 		const subscribed = true
 
-		const query = getQueryParams()
-		axios
-			.get('/api/read-targets')
-			.then(res => {
-				console.error('OKM=====', res.data)
-				if (res.data) {
-					// Get the query params and parse it so we get proper obj
-					const targetsObj = res.data
-					// Populate the targets array
-					for (let [key, value] of Object.entries(targetsObj)) {
+		axios.get('/api/get-profiles').then(res => {
+			if (res.data) {
+				// Response is the profiles object
+				const profilesObj = res.data
+
+				// Iterate profiles object
+				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
+					// Create new object to save in targets
+					const target = {
+						profile: key,
+						targets: []
+					}
+
+					target.targets = profileValue.targets.map(targetObj => {
 						// Split the size to get width and height
-						const sizeArr = value.size.split('x')
+						const size = targetObj.size
+						const sizeArr = size.split('x')
+						const width = sizeArr[0]
+						const height = sizeArr[1]
 
 						// Strip the .html off the index name we get
-						const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || value.index
+						const indexStripped = targetObj.index.substring(0, targetObj.index.lastIndexOf('.')) || targetObj.index
 						// Replace the "index_" with "size+__" so we get 300x250__v1
-						const indexFolder = indexStripped.replace('index_', `${value.size}__`)
-						// Create path obj
-						const debugPath = `/2-debug/${value.size}/`
-						const trafficPath = `/3-traffic/${query.profile}/${indexFolder}/`
+						const indexFolder = indexStripped.replace('index_', `${size}__`)
 
-						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
-					}
+						// Create path obj
+						targetObj.debugPath = `/2-debug/${targetKey.size}/`
+						targetObj.trafficPath = `/3-traffic/${profileKey}/${indexFolder}/`
+						targetObj.width = width
+						targetObj.height = height
+						return targetObj
+					})
+
+					targetsArr.push(target)
 				}
-				if (subscribed) {
-					setTargets(targetsArr)
-					subscribed = false
-				}
-			})
-			.catch(error => {
-				// handle error
-				console.log(error)
-			})
+			}
+			if (subscribed) {
+				console.error('SET TARGETS TO: ', targetsArr)
+				setTargets(targetsArr)
+				subscribed = false
+			}
+		})
+		// axios
+		// 	.get('/api/read-targets')
+		// 	.then(res => {
+		// 		if (res.data) {
+		// 			// Get the query params and parse it so we get proper obj
+		// 			const targetsObj = res.data
+		// 			// Populate the targets array
+		// 			for (let [key, value] of Object.entries(targetsObj)) {
+		// 				// Split the size to get width and height
+		// 				const sizeArr = value.size.split('x')
+
+		// 				// Strip the .html off the index name we get
+		// 				const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || value.index
+		// 				// Replace the "index_" with "size+__" so we get 300x250__v1
+		// 				const indexFolder = indexStripped.replace('index_', `${value.size}__`)
+		// 				// Create path obj
+		// 				const debugPath = `/2-debug/${value.size}/`
+		// 				const trafficPath = `/3-traffic/${query.profile}/${indexFolder}/`
+
+		// 				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
+		// 			}
+		// 		}
+		// 		if (subscribed) {
+		// 			setTargets(targetsArr)
+		// 			subscribed = false
+		// 		}
+		// 	})
+		// 	.catch(error => {
+		// 		// handle error
+		// 		console.log(error)
+		// 	})
 	}, [])
 
 	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
