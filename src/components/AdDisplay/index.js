@@ -9,9 +9,9 @@ function AdDisplay({ targets, urlParams, deployFolder }) {
 	return (
 		<div className="addisplay">
 			<div className="props__adcontainer">
-				{/* {targets.map(target => {
+				{targets.map(target => {
 					return <Ad key={uuidv4()} data={target} urlParams={urlParams} deployFolder={deployFolder} />
-				})} */}
+				})}
 			</div>
 		</div>
 	)
