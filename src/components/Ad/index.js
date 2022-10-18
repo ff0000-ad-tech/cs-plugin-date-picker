@@ -10,7 +10,7 @@ function Ad({ target, urlParams }) {
 		setReplayKey(Math.random())
 	}
 
-	// Change path based on deployFolder
+	// Change path based on profile
 	const getPath = () => {
 		return target.profile == 'default' ? debugPath : trafficPath
 	}
@@ -18,7 +18,10 @@ function Ad({ target, urlParams }) {
 	return (
 		<div className="ad">
 			<div className="ad__header" style={{ width: `${width}px` }}>
-				{`${width}x${height} - ${getPath()}`}
+				<span>
+					{`${width}x${height} - `}
+					<span style={{ fontSize: '30%' }}>{getPath()}</span>
+				</span>
 				<IconButton aria-label="delete" onClick={replayAd}>
 					<ReplayIcon />
 				</IconButton>
