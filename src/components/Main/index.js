@@ -28,7 +28,7 @@ function Main() {
 	const [tzValue, setTzValue] = useState('US/Eastern')
 	const [urlParams, setUrlParams] = useState(null)
 	const [targets, setTargets] = useState([])
-	const [deployFolder, setDeployFolder] = useState('2-debug')
+	const [deployFolder, setDeployFolder] = useState('default')
 
 	// Session storage
 	// Get any saved dates in session storage
@@ -124,12 +124,12 @@ function Main() {
 					targetsArr.push(target)
 				}
 			}
-			if (subscribed) {
-				console.error('SET TARGETS TO: ', targetsArr)
-				setTargets(targetsArr)
-				subscribed = false
-			}
 		})
+		if (subscribed) {
+			console.error('SET TARGETS TO: ', targetsArr)
+			setTargets(targetsArr)
+			subscribed = false
+		}
 		// axios
 		// 	.get('/api/read-targets')
 		// 	.then(res => {
