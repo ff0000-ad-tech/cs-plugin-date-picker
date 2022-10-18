@@ -89,6 +89,7 @@ function Main() {
 		const targetsObj = {}
 		let subscribed = true
 
+		// axios.get('http://192.168.1.122:5200/api/get-profiles').then(res => {
 		axios.get('/api/get-profiles').then(res => {
 			if (res.data) {
 				// Response is the profiles object
@@ -140,7 +141,9 @@ function Main() {
 		}
 	}))
 
-	const tabPanel = useMemo(() => <TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />, [savedDates])
+	const tabPanel = useMemo(() => {
+		return <TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />
+	}, [savedDates])
 
 	return (
 		<div className="main">
@@ -201,7 +204,7 @@ function Main() {
 				</Button>
 			</div>
 			{savedDates.length > 0 ? (
-				{ tabPanel }
+				tabPanel
 			) : Object.entries(targets).length > 0 ? (
 				<AdDisplay targets={targets[deployFolder]} urlParams={urlParams} deployFolder={deployFolder} />
 			) : null}
