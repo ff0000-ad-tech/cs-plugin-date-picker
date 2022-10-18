@@ -100,9 +100,10 @@ function Main() {
 						const sizeArr = value.size.split('x')
 						// Create new target obj
 
+						const indexStripped = value.index.substring(0, value.index.lastIndexOf('.')) || filename
 						// Create path obj
 						const debugPath = `/2-debug/${value.size}/`
-						const trafficPath = `/trafficPath/default/${value.size}/`
+						const trafficPath = `/3-traffic/default/${indexStripped}/`
 
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
