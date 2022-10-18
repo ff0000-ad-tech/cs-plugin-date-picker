@@ -82,7 +82,7 @@ function Main() {
 		const arr = path.split('/')
 		const [slash, folder, profile, index, trailingSlash] = arr
 		const newPath = `/${folder}/${profile}/${index}/`
-		return `/2-debug/${profile}/${index}/`
+		return `/2-debug/${index}/`
 	}
 
 	useEffect(() => {
