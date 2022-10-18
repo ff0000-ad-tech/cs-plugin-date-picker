@@ -228,11 +228,11 @@ function Main() {
 					Save Date
 				</Button>
 			</div>
-			{savedDates.length > 0 ? (
+			{/* {savedDates.length > 0 ? (
 				<TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} deployFolder={deployFolder} />
 			) : (
 				<AdDisplay targets={targets} urlParams={urlParams} deployFolder={deployFolder} />
-			)}
+			)} */}
 		</div>
 	)
 }
