@@ -85,13 +85,13 @@ function Main() {
 	}
 
 	useEffect(() => {
-		let profilesObj
+		let profilesObj = {}
 		let subscribed = true
 
 		axios.get('/api/get-profiles').then(res => {
 			if (res.data) {
 				// Response is the profiles object
-				profilesObj = res.data
+				profilesObj = { ...res.data }
 
 				// Iterate profiles object
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
