@@ -11,7 +11,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import './styles.scss'
 
 function TabPanel(props) {
-	const { children, value, index, ...other } = props
+	const { children, value, index, deployFolder, ...other } = props
 
 	return (
 		<div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
@@ -79,7 +79,7 @@ export default function BasicTabs(props) {
 			{props.savedDates.map((date, idx) => {
 				return (
 					<TabPanel value={value} index={idx} key={uuidv4()}>
-						<AdDisplay targets={props.targets} urlParams={date.urlParams} />
+						<AdDisplay targets={props.targets} urlParams={date.urlParams} deployFolder={date.deployFolder} />
 					</TabPanel>
 				)
 			})}

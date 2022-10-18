@@ -47,7 +47,8 @@ function Main() {
 				dateValue,
 				timeValue,
 				tzValue,
-				urlParams
+				urlParams,
+				deployFolder
 			}
 			date.label = generateLabel(date)
 			const newSavedDates = [...prev, date]
@@ -72,39 +73,42 @@ function Main() {
 
 	// Set url params
 	useEffect(() => {
-		console.error(deployFolder)
 		const date = dateValue.format('YYYY-MM-DD')
 		const time = timeValue.format('HH:mm:ss')
 		setUrlParams(`?date=${date} ${time}&tz=${tzValue}`)
-	}, [dateValue, timeValue, tzValue, deployFolder])
+	}, [dateValue, timeValue, tzValue])
+
+	const getDebugPath = path => {
+		const arr = path.split('/')
+		const [slash, folder, profile, index, trailingSlash] = arr
+		const newPath = `/${folder}/${profile}/${index}/`
+		return `/2-debug/${profile}/${index}/`
+	}
 
 	useEffect(() => {
 		let subscribed = true
 		const query = getQueryParams()
 
-		const targetsArr = [...targets]
+		const targetsArr = []
 		if (query.targets) {
 			// Get the query params and parse it so we get proper obj
 			const targetsObj = JSON.parse(query.targets)
 			// Populate the targets array
-			for (let [key, value] of Object.entries(targetsObj)) {
+			for (let [key, trafficPath] of Object.entries(targetsObj)) {
 				// Split the path to get the size
 				const [profile, size, index] = key.split('/')
 				// Split the size to get width and height
 				const sizeArr = size.split('x')
 				// Create new target obj
-				const path = `/${deployFolder}/${profile}/${index}`
-				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], path: path })
+
+				// Create path obj
+				const debugPath = getDebugPath(trafficPath)
+
+				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 			}
 		}
-		console.error({ query })
+		setTargets(targetsArr)
 		console.error({ targetsArr })
-		if (subscribed) {
-			setTargets(targetsArr)
-		}
-		return () => {
-			subscribed = false
-		}
 	}, [])
 
 	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
@@ -176,9 +180,9 @@ function Main() {
 				</Button>
 			</div>
 			{savedDates.length > 0 ? (
-				<TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} />
+				<TabPanel savedDates={savedDates} targets={targets} onDelete={deleteSavedDate} deployFolder={deployFolder} />
 			) : (
-				<AdDisplay targets={targets} urlParams={urlParams} />
+				<AdDisplay targets={targets} urlParams={urlParams} deployFolder={deployFolder} />
 			)}
 		</div>
 	)
