@@ -228,8 +228,9 @@ function Main() {
 					Save Date
 				</Button>
 			</div>
+			{/* <TabPanel savedDates={savedDates} targets={targets[deployFolder]} onDelete={deleteSavedDate} deployFolder={deployFolder} /> */}
 			{savedDates.length > 0 ? (
-				<TabPanel savedDates={savedDates} targets={targets[deployFolder]} onDelete={deleteSavedDate} deployFolder={deployFolder} />
+				<TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />
 			) : Object.entries(targets).length > 0 ? (
 				<AdDisplay targets={targets[deployFolder]} urlParams={urlParams} deployFolder={deployFolder} />
 			) : null}
