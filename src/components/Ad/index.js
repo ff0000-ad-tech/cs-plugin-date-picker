@@ -2,8 +2,8 @@ import './styles.scss'
 import ReplayIcon from '@mui/icons-material/Replay'
 import IconButton from '@mui/material/IconButton'
 import { useState } from 'react'
-function Ad({ data, urlParams, deployFolder }) {
-	const { width, height, debugPath, trafficPath } = data
+function Ad({ target, urlParams }) {
+	const { width, height, debugPath, trafficPath } = target
 	const [replayKey, setReplayKey] = useState(1)
 
 	const replayAd = () => {
@@ -12,7 +12,7 @@ function Ad({ data, urlParams, deployFolder }) {
 
 	// Change path based on deployFolder
 	const getPath = () => {
-		return deployFolder == 'default' ? debugPath : trafficPath
+		return target.profile == 'default' ? debugPath : trafficPath
 	}
 
 	return (
