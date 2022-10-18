@@ -117,7 +117,7 @@ function Main() {
 						return targetObj
 					})
 
-					targetsObj[profileKey].targets = targets
+					targetsObj[profileKey] = targets
 				}
 			}
 		})
