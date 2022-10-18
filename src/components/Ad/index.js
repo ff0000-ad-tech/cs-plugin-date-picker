@@ -23,7 +23,7 @@ function Ad({ data, urlParams, deployFolder }) {
 					<ReplayIcon />
 				</IconButton>
 			</div>
-			<iframe src={`${getPath()}index.html${urlParams}`} width={width} height={height} title="Iframe Example" key={replayKey}></iframe>
+			<iframe src={`${getPath()}${urlParams}`} width={width} height={height} title="Iframe Example" key={replayKey}></iframe>
 		</div>
 	)
 }
