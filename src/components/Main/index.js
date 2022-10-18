@@ -81,14 +81,13 @@ function Main() {
 	const getDebugPath = path => {
 		const arr = path.split('/')
 		const [slash, folder, profile, index, trailingSlash] = arr
-		const newPath = `/${folder}/${profile}/${index}/`
 		return `/2-debug/${index}/`
 	}
 
 	useEffect(() => {
 		const targetsArr = []
 		axios
-			.get('api/read-targets')
+			.get('/api/read-targets')
 			.then(res => {
 				console.error('OKM=====', res.data)
 				if (res.data) {
