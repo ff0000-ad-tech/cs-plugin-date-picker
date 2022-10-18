@@ -86,6 +86,7 @@ function Main() {
 
 	useEffect(() => {
 		const targetsArr = []
+		const subscribed = true
 		axios
 			.get('/api/read-targets')
 			.then(res => {
@@ -106,7 +107,10 @@ function Main() {
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
 				}
-				// setTargets(targetsArr)
+				if (subscribed) {
+					setTargets(targetsArr)
+					subscribed = false
+				}
 			})
 			.catch(error => {
 				// handle error
