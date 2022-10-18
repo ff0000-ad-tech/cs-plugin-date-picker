@@ -85,37 +85,37 @@ function Main() {
 		return `/2-debug/${index}/`
 	}
 
-	const getTargets = async () => {
-		const response = await axios.get('/api/read-targets')
-		const data = await response.data
-		return data
-	}
+	const getTargets = async () => {}
 
 	useEffect(() => {
-		const t = getTargets()
-		console.error('GOT DATA YAy', t)
-		let subscribed = true
-		const query = getQueryParams()
-
 		const targetsArr = []
-		if (query.targets) {
-			// Get the query params and parse it so we get proper obj
-			const targetsObj = JSON.parse(query.targets)
-			// Populate the targets array
-			for (let [key, trafficPath] of Object.entries(targetsObj)) {
-				// Split the path to get the size
-				const [profile, size, index] = key.split('/')
-				// Split the size to get width and height
-				const sizeArr = size.split('x')
-				// Create new target obj
+		axios
+			.get('api/read-targets')
+			.then(res => {
+				console.error('OKM=====', res.data)
+				// if (query.data) {
+				// 	// Get the query params and parse it so we get proper obj
+				// 	const targetsObj = JSON.parse(query.targets)
+				// 	// Populate the targets array
+				// 	for (let [key, trafficPath] of Object.entries(targetsObj)) {
+				// 		// Split the path to get the size
+				// 		const [profile, size, index] = key.split('/')
+				// 		// Split the size to get width and height
+				// 		const sizeArr = size.split('x')
+				// 		// Create new target obj
 
-				// Create path obj
-				const debugPath = getDebugPath(trafficPath)
+				// 		// Create path obj
+				// 		const debugPath = getDebugPath(trafficPath)
 
-				targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
-			}
-		}
-		setTargets(targetsArr)
+				// 		targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
+				// 	}
+				// }
+				// setTargets(targetsArr)
+			})
+			.catch(error => {
+				// handle error
+				console.log(error)
+			})
 	}, [])
 
 	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
