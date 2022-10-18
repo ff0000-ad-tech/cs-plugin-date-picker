@@ -89,7 +89,7 @@ function Main() {
 		axios
 			.get('/api/read-targets')
 			.then(response => {
-				console.error('GOT DATA', response)
+				return response.data
 			})
 			.catch(error => {
 				console.error('ERROR GETTING TARGETS')
@@ -97,7 +97,8 @@ function Main() {
 	}
 
 	useEffect(() => {
-		getTargets()
+		const t = getTargets()
+		console.error('GOT DATA T', t)
 		let subscribed = true
 		const query = getQueryParams()
 
