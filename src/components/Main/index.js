@@ -219,9 +219,8 @@ function Main() {
 							setDeployFolder(e.target.value)
 						}}
 					>
-						{targets.map(target => {
-							const profile = target.profile
-							return <MenuItem value={profile}>{profile}</MenuItem>
+						{Object.keys(targets).map(key => {
+							return <MenuItem value={key}>{key}</MenuItem>
 						})}
 					</Select>
 				</FormControl>
