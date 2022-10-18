@@ -101,12 +101,12 @@ function Main() {
 
 						// Create path obj
 						const debugPath = `/2-debug/${value.size}/`
-						const trafficPath = `/trafficPath/default/${size}/`
+						const trafficPath = `/trafficPath/default/${value.size}/`
 
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
 				}
-				setTargets(targetsArr)
+				// setTargets(targetsArr)
 			})
 			.catch(error => {
 				// handle error
