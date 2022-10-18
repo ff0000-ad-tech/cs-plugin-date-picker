@@ -85,19 +85,19 @@ function Main() {
 	}
 
 	useEffect(() => {
-		const targetsObj = {}
-		const subscribed = true
+		let profilesObj
+		let subscribed = true
 
 		axios.get('/api/get-profiles').then(res => {
 			if (res.data) {
 				// Response is the profiles object
-				const profilesObj = res.data
+				profilesObj = res.data
 
 				// Iterate profiles object
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
 					// Create new object to save in targets
 
-					const targets = profileValue.targets.map(targetObj => {
+					const updatedTargets = profileValue.targets.map(targetObj => {
 						// Split the size to get width and height
 						const size = targetObj.size
 						const sizeArr = size.split('x')
@@ -117,13 +117,13 @@ function Main() {
 						return targetObj
 					})
 
-					targetsObj[profileKey].targets = targets
+					profilesObj[profileKey].targets = updatedTargets
 				}
 			}
 		})
 		if (subscribed) {
-			console.error('SET TARGETS TO: ', targetsObj)
-			setTargets(targetsObj)
+			console.error('SET TARGETS TO: ', profilesObj)
+			setTargets(profilesObj)
 			subscribed = false
 		}
 		// axios
