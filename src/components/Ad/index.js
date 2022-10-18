@@ -19,8 +19,9 @@ function Ad({ target, urlParams }) {
 		<div className="ad">
 			<div className="ad__header" style={{ width: `${width}px` }}>
 				<span>
-					{`${width}x${height} - `}
-					<span style={{ fontSize: '30%' }}>{getPath()}</span>
+					{`${width}x${height}`}
+					<br></br>
+					<span style={{ fontSize: '30%', fontWeight: 'normal' }}>{getPath()}</span>
 				</span>
 				<IconButton aria-label="delete" onClick={replayAd}>
 					<ReplayIcon />
