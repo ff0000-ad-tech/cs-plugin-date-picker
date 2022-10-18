@@ -87,6 +87,8 @@ function Main() {
 	useEffect(() => {
 		const targetsArr = []
 		const subscribed = true
+
+		const query = getQueryParams()
 		axios
 			.get('/api/read-targets')
 			.then(res => {
@@ -105,7 +107,7 @@ function Main() {
 						const indexFolder = indexStripped.replace('index_', `${value.size}__`)
 						// Create path obj
 						const debugPath = `/2-debug/${value.size}/`
-						const trafficPath = `/3-traffic/default/${indexFolder}/`
+						const trafficPath = `/3-traffic/${query.profile}/${indexFolder}/`
 
 						targetsArr.push({ width: sizeArr[0], height: sizeArr[1], trafficPath: trafficPath, debugPath: debugPath })
 					}
