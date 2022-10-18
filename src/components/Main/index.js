@@ -96,7 +96,7 @@ function Main() {
 
 	useEffect(() => {
 		const t = getTargets()
-		console.error('GOT DATA T', t)
+		console.error('GOT DATA TT', t)
 		let subscribed = true
 		const query = getQueryParams()
 
