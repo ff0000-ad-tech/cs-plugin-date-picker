@@ -86,7 +86,7 @@ function Main() {
 	}
 
 	const getTargets = () => {
-		axios
+		return axios
 			.get('/api/read-targets')
 			.then(response => {
 				return response.data
