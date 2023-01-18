@@ -93,7 +93,6 @@ function Main() {
 			if (res.data) {
 				// Response is the profiles object
 				const profilesObj = res.data
-
 				// Iterate profiles object
 				for (let [profileKey, profileValue] of Object.entries(profilesObj)) {
 					// Create new object to save in targets
@@ -107,8 +106,17 @@ function Main() {
 
 						// Strip the .html off the index name we get
 						const indexStripped = targetObj.index.substring(0, targetObj.index.lastIndexOf('.')) || targetObj.index
-						// Replace the "index_" with "size+__" so we get 300x250__v1
-						const indexFolder = indexStripped.replace('index_', `${size}__`)
+
+						let indexFolder = `${size}`
+						if (targetObj.index !== 'index.html') {
+							if (targetObj.index.includes('index_')) {
+								indexFolder = indexStripped.replace('index_', `${size}__`)
+							}
+							if (targetObj.index.includes('index__')) {
+								indexFolder = indexStripped.replace('index__', `${size}__`)
+							}
+							// Replace the "index_" with "size+__" so we get 300x250__v1
+						}
 
 						// Create path obj
 						targetObj.debugPath = `/2-debug/${indexFolder}/`
@@ -183,6 +191,9 @@ function Main() {
 						<MenuItem value="US/Hawaii">US/Hawaii</MenuItem>
 					</Select>
 				</FormControl>
+				{Object.keys(targets).map(key => {
+					return key
+				})}
 				<FormControl style={{ width: '170px' }}>
 					<Select
 						labelId="demo-simple-select-label"
