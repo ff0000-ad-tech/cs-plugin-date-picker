@@ -194,6 +194,7 @@ function Main() {
 				{Object.keys(targets).map(key => {
 					return key
 				})}
+				{Object.keys(targets)}
 				<FormControl style={{ width: '170px' }}>
 					<Select
 						labelId="demo-simple-select-label"
