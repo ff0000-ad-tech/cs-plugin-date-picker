@@ -134,6 +134,7 @@ function Main() {
 			setTargets(targetsObj)
 			subscribed = false
 		}
+		setDebugOrTraffic('Debug')
 	}, [])
 
 	const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
@@ -191,9 +192,6 @@ function Main() {
 						<MenuItem value="US/Hawaii">US/Hawaii</MenuItem>
 					</Select>
 				</FormControl>
-				{Object.keys(targets).map(key => {
-					return key
-				})}
 				{Object.keys(targets)}
 				<FormControl style={{ width: '170px' }}>
 					<Select
