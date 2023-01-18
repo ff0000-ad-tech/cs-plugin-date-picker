@@ -155,7 +155,7 @@ function Main() {
 
 	return (
 		<div className="main">
-			<div className="main__header">CS Date Picker 2</div>
+			<div className="main__header">CS Date Picker</div>
 			<div className="main__pickercontainer">
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
 					<StyledDatePicker
