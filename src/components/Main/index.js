@@ -128,6 +128,8 @@ function Main() {
 
 					targetsObj[profileKey] = targets
 				}
+				setDebugOrTraffic('Debug')
+				setTargets(targetsObj)
 			}
 		})
 		if (subscribed) {
@@ -192,7 +194,6 @@ function Main() {
 						<MenuItem value="US/Hawaii">US/Hawaii</MenuItem>
 					</Select>
 				</FormControl>
-				{Object.keys(targets)}
 				<FormControl style={{ width: '170px' }}>
 					<Select
 						labelId="demo-simple-select-label"
