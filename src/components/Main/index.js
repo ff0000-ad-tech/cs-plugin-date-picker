@@ -128,7 +128,7 @@ function Main() {
 
 					targetsObj[profileKey] = targets
 				}
-				setDebugOrTraffic('Debug')
+				setDebugOrTraffic('debug')
 				setTargets(targetsObj)
 			}
 		})
