@@ -10,3 +10,8 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 # Creative Server Plugin - CS Date Picker
+
+To Dev:
+Make edits then run npm run build
+Commit and push
+Reinstall in project using npm i git@github.com:ff0000-ad-tech/cs-plugin-date-picker.git#BRANCH_NAME
