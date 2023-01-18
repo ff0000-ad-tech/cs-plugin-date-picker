@@ -148,7 +148,7 @@ function Main() {
 		}
 	}))
 
-	// Memoize tab panel so it does not rerender when changing dates
+	// Memoize tab panel so it does not rerender when changing date
 	const tabPanel = useMemo(() => {
 		return <TabPanel savedDates={savedDates} onDelete={deleteSavedDate} />
 	}, [savedDates])
